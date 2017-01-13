@@ -10,13 +10,13 @@
 </head>
 <body>
 	<div class="row1">
-		<img src="hamburger.svg" alt="Menu icon">
+		<img src="hamburger.svg" class = "menu-icon" alt="Menu icon">
 		<h1>Welcome to Lucknow</h1>
 	</div>
 	<div class="navigate">
 	<input type="text" name="search" data-bind="textInput:query" placeholder="Type in to filter the list">
 		<ul data-bind = "foreach :searchResults ">
-			<li><a href="#" data-bind ="text :title, click: trigger"></a></li>
+			<li class = "item"><a href="#" data-bind ="text :title, click: trigger"></a></li>
 		</ul>
 	</div>
 	<div id="map"></div>
@@ -27,6 +27,11 @@
 	 <script>
         $('img').click(function(){
             $('.navigate').toggleClass('click');
+        });
+    </script>
+    <script>
+    	 $('.item').click(function(){
+            $('.navigate').removeClass('click');
         });
     </script>
 </body>

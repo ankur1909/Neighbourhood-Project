@@ -7,7 +7,7 @@ html,body{
 			display: flex;
 			flex-wrap: wrap;
 		}
-		img {
+		.menu-icon {
 			margin: 5px;
 			vertical-align: middle;
 			display: none;
@@ -16,15 +16,12 @@ html,body{
 			position: relative;
 			height: 100%;
 			width: 80%;
-			display: flex;
-			flex-wrap: wrap;
-			
+			display: inline-block;
 		}
 		.navigate {
 			height: 100%;
 			width: 20%;
 			display: inline-block;
-			flex-wrap: wrap;
 			position: relative;
 			background-color: #74507a;
 		}
@@ -57,19 +54,47 @@ html,body{
 			color: #e7e3e8;
 		}
 @media screen and (max-width: 900px){
-	img {
+	html,body {
+		height: 100%;
+	}
+	.row1 {
+		height: 9%;
+	}
+	.menu-icon {
 		display: inline-block;
 	}
 	.navigate {
-		 -webkit-transform: translate(-300px, 0);
+	 -webkit-transform: translate(-300px, 0);
     transform: translate(-300px, 0);
+    position: absolute;
+    top: 9%;
+    z-index: 10;
+    width: 300px;
+    height: 91%;
 	}
 	.navigate.click {
 		 -webkit-transform: translate(0, 0);
     transform: translate(0, 0);
 	}
 	#map {
+		height: 91%;
 		width: 100%;
+		left: auto;
+		right: auto;
+		display: flex;
+		flex-wrap: wrap;
+		position: static;
 	}
 
 }
+/*
+#map {
+  height: 100%;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}*/

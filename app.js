@@ -44,6 +44,24 @@ var model =[
 var map, marker,infowindow,x;
 var markerArray=[];
 
+
+var ViewModel = function(){
+	this.model =ko.observableArray(model);
+	this.markerArray = ko.observableArray([]);
+    this.query = ko.observable('');
+	//This function is to filter the list according to what letter are you typing.If the search bar is empty then it displays all the list of locations.
+	this.searchResults = ko.computed(function(){
+		//makes the map to show the markers.
+		var query = this.query().toLowerCase();
+		//This utils function help to filter the search according to the letter you type in and it makes the respective markers visible.
+		return ko.utils.arrayFilter(this.model(), function(list) {
+    	var result = list.title.toLowerCase().indexOf(query) > -1;
+    	list.marker.setVisible(result);
+      	return result;
+		});	
+	},this);
+};
+
 function initmap() {
 	map = new google.maps.Map(document.getElementById('map'),{
 			center :{lat :26.8467, lng :80.9462},
@@ -88,20 +106,3 @@ function initmap() {
 	};
 	ko.applyBindings(new ViewModel());
 }
-
-var ViewModel = function(){
-	this.model =ko.observableArray(model);
-	this.markerArray = ko.observableArray([]);
-    this.query = ko.observable('');
-	//This function is to filter the list according to what letter are you typing.If the search bar is empty then it displays all the list of locations.
-	this.searchResults = ko.computed(function(){
-		//makes the map to show the markers.
-		var query = this.query().toLowerCase();
-		//This utils function help to filter the search according to the letter you type in and it makes the respective markers visible.
-		return ko.utils.arrayFilter(this.model(), function(list) {
-    	var result = list.title.toLowerCase().indexOf(query) > -1;
-    	list.marker.setVisible(result);
-      	return result;
-		});	
-	},this);
-};

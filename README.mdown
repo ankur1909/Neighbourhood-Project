@@ -1,0 +1,21 @@
+# Udacity Neighbourhood Project
+
+### **How to run the app?**
+
+	Simply download the resources and run the index.html file in your web browser.
+
+### **App Description**
+
+	1. The App lists my favourite places in my hometown Lucknow,India. There is also a list of the places on the left-side.
+	   Simply click on the flag shaped marker and get to know more about the page. The infowindow has a link to the wikipedia page related to the place.
+
+	2. You can filter the list by simply using the input box at the left.
+
+	3. The app is fully responsive and works in all devices.
+
+#### **Tools Used :**
+
+
+	1. Knockout.js
+	2. jQuery.js
+

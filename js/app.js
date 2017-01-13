@@ -106,7 +106,26 @@ function initmap() {
                     success: function(response) {
                         infowindow.setContent('<h3>' + response[1] + '</h3><p>' + response[2] + '</p><a href="' + response[3] + '">' + response[1] + '</a>');
                         infowindow.open(map, marker);
-                    }
+                    },
+                    error: function(jqXHR, exception) {
+                        var msg = '';
+                        if (jqXHR.status === 0) {
+                            msg = 'Not connect.\n Verify Network.';
+                        } else if (jqXHR.status == 404) {
+                            msg = 'Requested page not found. [404]';
+                        } else if (jqXHR.status == 500) {
+                            msg = 'Internal Server Error [500].';
+                        } else if (exception === 'parsererror') {
+                            msg = 'Requested JSON parse failed.';
+                        } else if (exception === 'timeout') {
+                            msg = 'Time out error.';
+                        } else if (exception === 'abort') {
+                            msg = 'Ajax request aborted.';
+                        } else {
+                            msg = 'Uncaught Error.\n' + jqXHR.responseText;
+                        }
+                        alert(msg);
+                    },
                 });
             }
         }(marker));
